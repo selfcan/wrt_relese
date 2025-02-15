@@ -38,17 +38,17 @@ jobs:
     runs-on: ${{ inputs.runs-on }}
 
     steps:
-      - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v5
+      - name: Combine Disks(合并磁盘)
+        uses: easimon/maximize-build-space@master
         with:
+          swap-size-mb: 1024
+          temp-reserve-mb: 100
+          root-reserve-mb: 1024
           remove-dotnet: "true"
           remove-android: "true"
           remove-haskell: "true"
           remove-codeql: "true"
           remove-docker-images: "true"
-          remove-large-packages: "true"
-          remove-cached-tools: "true"
-          remove-swapfile: "true"
 
       - name: Checkout
         uses: actions/checkout@v4
